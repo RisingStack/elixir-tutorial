@@ -1,4 +1,5 @@
 create_task = fn ->
+  # async tasks are always linked!
   Task.async(fn ->
     Process.sleep(100)
     "I'm slow and async"
