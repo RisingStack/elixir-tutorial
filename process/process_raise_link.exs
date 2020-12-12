@@ -3,6 +3,10 @@ defmodule ProcessTutorial do
     spawn(fn -> send(pid, {type, message}) end)
   end
 
+  def start_receiver_process do
+    spawn_link(&receive_message/0)
+  end
+
   defp receive_message do
     receive do
       {:hello, message} -> IO.puts("Hello, world! #{message}")
@@ -11,10 +15,6 @@ defmodule ProcessTutorial do
     end
 
     receive_message()
-  end
-
-  def start_receiver_process do
-    spawn_link(&receive_message/0)
   end
 end
 
